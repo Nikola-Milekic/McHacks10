@@ -27,9 +27,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />}/>
         <Route path="Questions" element={<Questions />} />
-        <Route path="BuddyChat" element={<BuddyChat />} />
-        
-      </Routes>
+        <Route path="BuddyChat" element={<BuddyChat />} />   
+       </Routes>
     </BrowserRouter>
   </QueryClientProvider>
   );
