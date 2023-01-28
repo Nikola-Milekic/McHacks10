@@ -1,7 +1,7 @@
 function Questions(){
     return (
         <div>
-        <h1>Questions</h1>
+        <h1>Queasfstions</h1>
         <p>Some content</p>
         </div>
     )

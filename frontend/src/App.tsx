@@ -25,10 +25,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landing />}>
-          <Route index element={<Questions />} />
-          <Route path="BuddyChat" element={<BuddyChat />} />
-        </Route>
+        <Route path="/" element={<Landing />}/>
+        <Route path="Questions" element={<Questions />} />
+        <Route path="BuddyChat" element={<BuddyChat />} />
+        
       </Routes>
     </BrowserRouter>
   </QueryClientProvider>
