@@ -3,6 +3,8 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import PersonalSettingsImg from '../assets/images/PersonalSettingsImg';
+import BuddiesImg from '../assets/images/BuddiesImg';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -31,6 +33,7 @@ function Questions(){
                     </Grid>
                 </Grid>
             </Box>
+            <BuddiesImg></BuddiesImg>
         </Box>
        
         </>
