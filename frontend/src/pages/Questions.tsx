@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import PersonalSettingsImg from '../assets/images/PersonalSettingsImg';
-import BuddiesImg from '../assets/images/BuddiesImg';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,22 +17,23 @@ const Item = styled(Paper)(({ theme }) => ({
 function Questions(){
     return (
         <>
-        <Box sx={{padding: 10}}>
+        <Box sx={{padding: 8}}>
             <h1>Build your friend</h1>
-            <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={2} sx={{borderRadius: '22px', alignItems:'center'}}>
+            <Box sx={{ flexGrow: 1, backgroundColor:"grey" }}>
+                <Grid container spacing={2} sx={{borderRadius: '22px',margin: '2px'}}>
                     <Grid item xs={6}>
                         <Grid container spacing={1}>
-                            <Item>
+                            <Item >
                                 <h2>What is your name?</h2>
                             </Item>
                         </Grid>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid container xs={6} direction="column" alignItems="center" justifyContent="center">
+                        <PersonalSettingsImg></PersonalSettingsImg>
                     </Grid>
+                    
                 </Grid>
             </Box>
-            <BuddiesImg></BuddiesImg>
         </Box>
        
         </>
