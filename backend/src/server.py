@@ -1,4 +1,9 @@
 from flask import Flask
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+COHERE_API_KEY = os.environ.get('APIKEY')
 
 app = Flask(__name__)
 
