@@ -84,6 +84,7 @@ def chat_with_friend(name):
     name = name.lower()
     if(request.method == 'POST'):
         req = request.json
+        print(req)
         prompt = req['prompt']
         bot = conversant.PromptChatbot.from_persona(name, client=co, persona_dir=personaDir)
         with open(f'{personaDir}/{name}/config.json') as f:

@@ -5,7 +5,7 @@
         "avatar": ":mage:"
     },
     "client_config": {
-        "model": "xlarge",
+        "model": "medium",
         "max_tokens": 200,
         "temperature": 0.35,
         "stop_sequences": ["\n"]
