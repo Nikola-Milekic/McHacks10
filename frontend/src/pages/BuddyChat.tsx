@@ -5,12 +5,16 @@ import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import React from "react";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import Typography from "@mui/material/Typography";
+import BuddyList from "../assets/components/BuddyList";
+import Box from "@mui/material/Box";
 
 function BuddyChat() {
   useEffect(() => {
     Aos.init({ duration: 800 });
   }, []);
-
   return (
     <section>
       {/* header */}
@@ -32,8 +36,11 @@ function BuddyChat() {
           👋 Say <span className="text-primary">Hi</span> to your new Friend!
         </h1>
       </div>
-
-      <Chatbox />
+      <Box>
+        <BuddyList></BuddyList>
+        <Chatbox />
+      </Box>
+      
 
       {/* breadcrumbs */}
       <div>

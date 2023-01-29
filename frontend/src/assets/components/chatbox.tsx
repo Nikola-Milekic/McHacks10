@@ -21,6 +21,7 @@ function Chatbox() {
   const [query, setQuery] = useState("");
   const [isLoad, setIsLoad] = useState(false);
   const [data,setData] = useState([] as messageType[])
+
   const handleInput = (event: any) => {
     console.log(event.target.value)
     if(event.target.id === "query"){
@@ -78,14 +79,11 @@ function Chatbox() {
     }
   };
 
-  useMemo(() => {
-    console.log(buddyName);
-    console.log(messageData);
-    console.log(messageSuccess);
-    console.log(messagesLoading);
-    console.log("osaifjasoifjsafoiasoijasf")
+  useEffect(() => {
+    console.log("hihi")
+    reGetMessages();
 
-  }, [messageSuccess]);
+  }, [buddyName]);
 
   useEffect(() => {
     console.log(buddyName);
