@@ -33,7 +33,7 @@ function Questions(){
         {
             id: 1,
             question: "What is your buddy's name?",
-            realQuestion: "What is your buddy's name?",
+            realQuestion: "What is your name?",
             answer: name
         },
         {

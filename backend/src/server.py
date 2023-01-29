@@ -57,6 +57,8 @@ def add_persona():
     with open(f'{srcDir}/template.json') as f:
         template = json.load(f)
     template['chat_prompt_config']['examples'] = [questions,[]]
+    template['chat_prompt_config']['headers']['bot']=name
+    template['chat_prompt_config']['preamble']=str(template['chat_prompt_config']['preamble']).replace("$",name)
 
     if not os.path.exists(f'{personaDir}/{name}'):
         os.mkdir(f'{personaDir}/{name}')
