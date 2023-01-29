@@ -7,11 +7,13 @@ import cohere
 import conversant
 import pathlib
 import json
+from flask_cors import CORS
 
 load_dotenv()
 COHERE_API_KEY = os.environ.get('APIKEY')
 
 app = Flask(__name__)
+CORS(app)
 personaDir = str(pathlib.Path().resolve())+"/src/personas"
 srcDir = str(pathlib.Path().resolve())+"/src"
 co = cohere.Client(COHERE_API_KEY)
@@ -43,8 +45,9 @@ def add_persona():
     """
 
     content = request.json
-    name = content[0]['answer']
-    questions = content[1:]
+    print(content)
+    name = content[0]['answer'].lower()
+    questions = content
     for q in questions:
         q.pop('id', None)
         q.pop('question')
@@ -54,6 +57,8 @@ def add_persona():
     with open(f'{srcDir}/template.json') as f:
         template = json.load(f)
     template['chat_prompt_config']['examples'] = [questions,[]]
+    template['chat_prompt_config']['headers']['bot']=name
+    template['chat_prompt_config']['preamble']=str(template['chat_prompt_config']['preamble']).replace("$",name)
 
     if not os.path.exists(f'{personaDir}/{name}'):
         os.mkdir(f'{personaDir}/{name}')
@@ -81,6 +86,7 @@ def chat_with_friend(name):
     name = name.lower()
     if(request.method == 'POST'):
         req = request.json
+        print(req)
         prompt = req['prompt']
         bot = conversant.PromptChatbot.from_persona(name, client=co, persona_dir=personaDir)
         with open(f'{personaDir}/{name}/config.json') as f:
@@ -95,7 +101,7 @@ def chat_with_friend(name):
                 ).length
             )
         bot.reply(prompt)
-        persona['chat_prompt_config']['examples'][-1] = bot.chat_history
+        persona['chat_prompt_config']['examples'][-1].append(bot.chat_history[-1])
         out = json.dumps(persona, indent=4)
         with open(f'{personaDir}/{name}/config.json', "w") as f:
             f.write(out)

@@ -11,7 +11,7 @@
         "stop_sequences": ["\n"]
     },
     "chat_prompt_config": {
-        "preamble": "Below is a series of chats between Friend Bot and User. Friend Bot responds to User based on the <<DESCRIPTION>>.\n<<DESCRIPTION>>\nIn this chat you will ask questions about your Friend and he will answer. Based on his personality, he will give you answers.",
+        "preamble": "Below is a series of chats between two friends. $ responds to User based on the <<DESCRIPTION>>.\n<<DESCRIPTION>>\nIn this chat you will ask questions about your Friend and he will answer. Based on their personality, they will give you answers.",
         "example_separator": "<<CONVERSATION>>\n",
         "headers": {
             "user": "User",
