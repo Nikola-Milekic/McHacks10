@@ -24,11 +24,15 @@ function Landing() {
           </p>
         </div>
         <img src={main} width={300} alt="SVG" />
-        <button className="py-3 px-12 bg-primary text-white font-semibold rounded-2xl mt-16 hover:shadow-lg hover:bg-[#4e48be]">
+        <a
+          href="/Questions"
+          className="py-3 px-12 bg-primary text-white font-semibold rounded-2xl mt-16 hover:shadow-lg hover:bg-[#4e48be]"
+        >
           Build now
-        </button>
+        </a>
       </div>
     </section>
   );
 }
 export default Landing;
+x;
