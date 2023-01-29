@@ -5,11 +5,13 @@ import {
     Route,
     Routes,
 } from "react-router-dom";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import './App.css';
 import Landing from "./pages/Landing";
 import Questions from "./pages/Questions";
 import BuddyChat from "./pages/BuddyChat";
+import React from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: {

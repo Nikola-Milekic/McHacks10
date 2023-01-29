@@ -4,6 +4,7 @@ import Chatbox from "../assets/components/chatbox";
 import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import React from "react";
 
 function BuddyChat() {
   useEffect(() => {
@@ -16,7 +17,7 @@ function BuddyChat() {
       <div className="p-8 lg:px-20 lg:py-12">
         <p
           data-aos="fade-up"
-          data-aos-once
+          data-aos-onceå
           data-aos-delay="100"
           className="text-gray-500 text-lg lg:text-xl"
         >
