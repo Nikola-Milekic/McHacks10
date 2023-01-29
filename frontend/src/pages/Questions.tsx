@@ -11,6 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
+
 function Questions(){
     const [name,setName] = useState('')
     const [gender,setGender] = useState('')
@@ -19,7 +20,7 @@ function Questions(){
     var qArray = [
         {
             id: 1,
-            question: "What is your buddy's name?",
+            bot: "What is your buddy's name?",
             answer: name,
         },
         {
@@ -81,16 +82,6 @@ function Questions(){
         console.log(name);
         if (name !== '' && gender !== '' && questions[0]['answer'] === name){
             console.log(questions[0]['answer'])
-            setQuestions(
-                questions.map((q) =>
-                    q.id === 3 ? {...q, question: `What is ${name}'s age?`} : q
-                    )
-            )
-            setQuestions(
-                questions.map((q) =>
-                    q.id === 4 ? {...q, question: `Where is ${name} located?`} : q
-            )
-            )
             setTimeout(()=>{
                 console.log(questions)
             },1000);
@@ -100,11 +91,26 @@ function Questions(){
         }
     }
 
-    useEffect(()=>{
-    },[questions])
+    /*
+    const addBuddy: () => any = async () => {
+        const URL = 'http://localhost:3001/add-persona'
+        const response = await axios.post(URL, {
+            name: name,
+            examples:[
+
+            ]
+            )
+*/
     const handleSubmit = () =>{
-        console.log("hello")
+        console.log("fsoij")
+        let buddy = questions.map((q) =>{
+            return q.answer
+        })
+        console.log(buddy)
+
     }
+
+
 
     if(!hasName){
         return (
@@ -115,7 +121,7 @@ function Questions(){
                     <Grid container spacing={2} sx={{borderRadius: '22px',margin: '2px'}}>
                         <Grid item xs={6}>
                             <Grid container spacing={1} margin={'10px'}>
-                                <FormControl onSubmit={handleSubmit}>
+                                <FormControl >
                                     <FormLabel htmlFor="nameQuestion">{questions[0]['question']}</FormLabel>  
                                     <Textarea slotProps={{
                                         textarea:{
