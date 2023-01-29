@@ -24,7 +24,7 @@ function Questions(){
     var qArray = [
         {
             id: 1,
-            bot: "What is your buddy's name?",
+            question: "What is your buddy's name?",
             answer: name,
         },
         {
@@ -57,6 +57,7 @@ function Questions(){
             question:`What is ${name}'s personality?`,
             answer:''
         },
+        
         
     ]
     const [questions,setQuestions] = useState(qArray)

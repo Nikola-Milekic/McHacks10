@@ -30,7 +30,7 @@ function BuddyChat() {
           className="text-2xl py-2 lg:text-3xl text-gray-700 font-semibold"
         >
           👋 Say <span className="text-primary">Hi</span> to Friend!
-        </h1>
+        </h1>å
       </div>
 
       <Chatbox />

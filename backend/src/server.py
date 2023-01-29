@@ -47,6 +47,7 @@ def add_persona():
 
     content = request.json
     name = content['name'].lower()
+
     examples = content['examples']
 
     with open(f'{srcDir}/template.json') as f:
