@@ -46,8 +46,8 @@ def add_persona():
 
     content = request.json
     print(content)
-    name = content[0]['answer']
-    questions = content[1:]
+    name = content[0]['answer'].lower()
+    questions = content
     for q in questions:
         q.pop('id', None)
         q.pop('question')
