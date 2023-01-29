@@ -32,16 +32,15 @@ def add_persona():
     Endpoint to create a new persona config.
     ---
     POST:
-    {
-        "name": "John Doe"
-        "examples": [
-            {
-                "user": "{QUESTION}"
-                "bot": "{RESPONSE}"
-            },
-            ...
-        ]
-    }
+    [
+        {
+            "id": {ID}, 'optional'
+            "question": "{UI FRIENDLY QUESTION}", 'optional'
+            "realQuestion": "{QUESTION}", 'required'
+            "answer": "{RESPONSE}" 'required
+        },
+        ...
+    ]
     """
 
     content = request.json

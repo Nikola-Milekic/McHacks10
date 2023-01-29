@@ -18,16 +18,15 @@ _(localhost:3001 by default)_
     (POST) Creates a new persona config.
     Expects a POST payload of the following format:
     ```
-    {
-        "name": "John Doe"
-        "examples": [
-            {
-                "user": "{QUESTION}"
-                "bot": "{RESPONSE}"
-            },
-            ...
-        ]
-    }
+    [
+        {
+            "id": {ID}, 'optional'
+            "question": "{UI FRIENDLY QUESTION}", 'optional'
+            "realQuestion": "{QUESTION}", 'required'
+            "answer": "{RESPONSE}" 'required
+        },
+        ...
+    ]
     ```
     Returns an array of all persona names.
 3. /chat/{PERSONA}
