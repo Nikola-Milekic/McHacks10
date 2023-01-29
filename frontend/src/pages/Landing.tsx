@@ -15,11 +15,12 @@ function Landing() {
     <section data-aos="fade-up" data-aos-once data-aos-delay="500">
       <div className="flex flex-col h-screen items-center justify-center">
         <div className="mb-12 space-y-3">
-          <h1 className="text-5xl font-bold text-gray-600">
+          <h1 className="text-5xl font-bold text-gray-600 text-center">
             Build-a-<span className="text-primary">Buddy</span>
           </h1>
           <p className="text-lg text-center text-gray-600 italic font-semibold">
-            Configure your dream <span className="text-primary">friend</span>.
+            Configure your dream <span className="text-primary">friend</span> in
+            just a few steps.
           </p>
         </div>
         <img src={main} width={300} alt="SVG" />
