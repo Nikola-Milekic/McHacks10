@@ -24,14 +24,35 @@ function Questions(){
         },
         {
             id: 2,
-            question: "Gender",
+            question: "What is their gender?",
             answer: gender
         },
         {
             id: 3,
-            question:"Age",
+            question:`What is ${name}'s age?`,
             answer:age
-        }
+        },
+        {
+            id: 4,
+            question:`Where is ${name} located?`,
+            answer:''
+        },
+        {
+            id: 5,
+            question:`What is their occupation?`,
+            answer:''
+        },
+        {
+            id: 6,
+            question:`What is ${name}'s interests?`,
+            answer:''
+        },
+        {
+            id: 7,
+            question:`What is ${name}'s personality?`,
+            answer:''
+        },
+        
     ]
     const [questions,setQuestions] = useState(qArray)
 
@@ -57,13 +78,29 @@ function Questions(){
             
     };
     const handleNext = () =>{
-        if (name !== '' && gender !== ''){
+        console.log(name);
+        if (name !== '' && gender !== '' && questions[0]['answer'] === name){
+            console.log(questions[0]['answer'])
+            setQuestions(
+                questions.map((q) =>
+                    q.id === 3 ? {...q, question: `What is ${name}'s age?`} : q
+                    )
+            )
+            setQuestions(
+                questions.map((q) =>
+                    q.id === 4 ? {...q, question: `Where is ${name} located?`} : q
+            )
+            )
+            setTimeout(()=>{
+                console.log(questions)
+            },1000);
+
+            console.log(questions)
             setHasName(true)
         }
     }
 
     useEffect(()=>{
-        console.log(questions)
     },[questions])
     const handleSubmit = () =>{
         console.log("hello")
@@ -122,25 +159,13 @@ function Questions(){
                         <Grid item xs={6}>
                             <Grid container spacing={1} margin={'10px'}>
                                 <FormControl onSubmit={handleSubmit}>
-                                    <FormLabel htmlFor="nameQuestion">{questions[0]['question']}</FormLabel>  
+                                    <FormLabel htmlFor="ageQuestion">{questions[2]['question']}</FormLabel>  
                                     <Textarea slotProps={{
                                         textarea:{
-                                            id: 'nameQuestion',
+                                            id: 'ageQuestion',
                                         }
-                                    }} sx={{width:'100%'}} onChange={event => handleInput(event)} minRows={3} placeholder="Could be Anything :)" value={questions[0]['answer']}>
+                                    }} sx={{width:'100%'}} onChange={event => handleInput(event)} minRows={3} placeholder="They have to be able to type and speak!" value={questions[2]['answer']}>
                                     </Textarea>
-                                    <FormLabel sx={{marginTop: '30px'}} htmlFor="genderQuestion" id="genderQuestion">Gender</FormLabel>
-                                        <RadioGroup
-                                            row
-                                            aria-labelledby="genderQuestion"
-                                            name="genderQuestion"
-                                            id="genderQuestion"
-                                            onChange={event => handleInput(event)}
-                                        >
-                                            <FormControlLabel value="female" control={<Radio />} label="Female" id="genderQuestion" />
-                                            <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                            <FormControlLabel value="other" control={<Radio />} label="Other" />
-                                        </RadioGroup>
                                         <Button variant="contained" onClick={()=>handleSubmit}>Submit</Button>
                                 </FormControl>
                             </Grid>
