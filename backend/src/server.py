@@ -55,8 +55,6 @@ def add_persona():
 
     if not os.path.exists(f'{personaDir}/{name}'):
         os.mkdir(f'{personaDir}/{name}')
-    else:
-        return f"Error! Buddy already exists.", 418
     out = json.dumps(template, indent=4)
     with open(f'{personaDir}/{name}/config.json', 'w') as f:
         f.write(out)
@@ -70,9 +68,18 @@ def chat_with_friend(name):
         req = request.json
         prompt = req['prompt']
         bot = conversant.PromptChatbot.from_persona(name, client=co, persona_dir=personaDir)
-        bot.reply(prompt)
         with open(f'{personaDir}/{name}/config.json') as f:
             persona = json.load(f)
+        chatLogs = persona['chat_prompt_config']['examples'][-1]
+        for log in chatLogs:
+            bot.chat_history.append(bot.prompt.create_interaction(log["user"], log["bot"]))
+            bot.prompt_history.append(log["user"])
+            bot.prompt_size_history.append(
+                bot.co.tokenize(
+                    bot.prompt.create_interaction_string(log["user"], log["bot"])
+                ).length
+            )
+        bot.reply(prompt)
         persona['chat_prompt_config']['examples'][-1].append(bot.chat_history[0])
         out = json.dumps(persona, indent=4)
         with open(f'{personaDir}/{name}/config.json', "w") as f:
