@@ -98,7 +98,7 @@ def chat_with_friend(name):
                 ).length
             )
         bot.reply(prompt)
-        persona['chat_prompt_config']['examples'][-1] = bot.chat_history
+        persona['chat_prompt_config']['examples'][-1].append(bot.chat_history[-1])
         out = json.dumps(persona, indent=4)
         with open(f'{personaDir}/{name}/config.json', "w") as f:
             f.write(out)
