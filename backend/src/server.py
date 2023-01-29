@@ -16,15 +16,12 @@ personaDir = str(pathlib.Path().resolve())+"/src/personas"
 srcDir = str(pathlib.Path().resolve())+"/src"
 co = cohere.Client(COHERE_API_KEY)
 
-@app.route('/')
-def hello():
-    bot = conversant.PromptChatbot.from_persona("friend", client=co, persona_dir=personaDir)
-    bot.reply("What school do you go to?")
-    return (bot.chat_history)
-
 @app.route('/list-personas')
-def listPersonas():
-    personaNames = os.listdir(personaDir)
+def list_personas():
+    """
+    Retrieves all persona names in a .
+    """
+    personaNames = [f for f in os.listdir(personaDir) if os.path.isdir(os.path.join(personaDir, f))]
     return jsonify(personaNames)
 
 @app.route('/add-persona', methods=['POST'])
@@ -63,6 +60,19 @@ def add_persona():
     
 @app.route('/chat/<name>', methods = ['POST', 'GET'])
 def chat_with_friend(name):
+    """
+    Endpoint to chat with a buddy and retrieve a chat history.
+    
+    Parameters:
+    name: str
+        Name of the buddy you want to chat with.
+    ---
+    POST:
+    {
+        "prompt": "{MESSAGE}"
+    }
+    """
+
     name = name.lower()
     if(request.method == 'POST'):
         req = request.json
