@@ -35,4 +35,3 @@ function Landing() {
   );
 }
 export default Landing;
-x;
