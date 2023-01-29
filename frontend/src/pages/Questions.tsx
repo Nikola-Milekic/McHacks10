@@ -275,6 +275,7 @@ function Questions(){
                                         }
                                     }} sx={{width:'100%'}} onChange={event => handleInput(event)} minRows={3} placeholder="" value={questions[6]['answer']}>
                                     </Textarea>
+                                    {customQs.length > 0 && <FormLabel>{"Write a custom questions in the 2nd person. i.e. What is your favorite hobby?"}</FormLabel>}
                                     {customQs.map((q, i)=>(<>
                                     <FormLabel>{"Custom Question "+i.toString()}</FormLabel> 
                                     <Textarea slotProps={{
