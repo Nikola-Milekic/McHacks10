@@ -1,0 +1,22 @@
+
+{
+    "chatbot_config": {
+        "max_context_examples": 100,
+        "avatar": ":mage:"
+    },
+    "client_config": {
+        "model": "xlarge",
+        "max_tokens": 200,
+        "temperature": 0.35,
+        "stop_sequences": ["\n"]
+    },
+    "chat_prompt_config": {
+        "preamble": "Below is a series of chats between Friend Bot and User. Friend Bot responds to User based on the <<DESCRIPTION>>.\n<<DESCRIPTION>>\nIn this chat you will ask questions about your Friend and he will answer. Based on his personality, he will give you answers.",
+        "example_separator": "<<CONVERSATION>>\n",
+        "headers": {
+            "user": "User",
+            "bot": "Friend Bot"
+        },
+        "examples": []
+    }
+}
