@@ -97,7 +97,7 @@ function Questions(){
                                             <FormControlLabel value="male" control={<Radio />} label="Male" />
                                             <FormControlLabel value="other" control={<Radio />} label="Other" />
                                         </RadioGroup>
-                                        <Button variant="contained" onClick={hasName ? ()=>handleSubmit:()=>handleNext()}>{hasName? "Submit":"Next"}</Button>
+                                        <Button variant="contained" onClick={()=>handleNext()}>{"Next"}</Button>
                                 </FormControl>
                             </Grid>
                         </Grid>
@@ -112,6 +112,47 @@ function Questions(){
             </>
         );
     }
-    return(<div></div>)
+    return(
+        <>
+            <Box sx={{padding: 8}}>
+                <h1>Build your friend</h1>
+                <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={2} sx={{borderRadius: '22px',margin: '2px'}}>
+                        <Grid item xs={6}>
+                            <Grid container spacing={1} margin={'10px'}>
+                                <FormControl onSubmit={handleSubmit}>
+                                    <FormLabel htmlFor="nameQuestion">{questions[0]['question']}</FormLabel>  
+                                    <Textarea slotProps={{
+                                        textarea:{
+                                            id: 'nameQuestion',
+                                        }
+                                    }} sx={{width:'100%'}} onChange={event => handleInput(event)} minRows={3} placeholder="Could be Anything :)" value={questions[0]['answer']}>
+                                    </Textarea>
+                                    <FormLabel sx={{marginTop: '30px'}} htmlFor="genderQuestion" id="genderQuestion">Gender</FormLabel>
+                                        <RadioGroup
+                                            row
+                                            aria-labelledby="genderQuestion"
+                                            name="genderQuestion"
+                                            id="genderQuestion"
+                                            onChange={event => handleInput(event)}
+                                        >
+                                            <FormControlLabel value="female" control={<Radio />} label="Female" id="genderQuestion" />
+                                            <FormControlLabel value="male" control={<Radio />} label="Male" />
+                                            <FormControlLabel value="other" control={<Radio />} label="Other" />
+                                        </RadioGroup>
+                                        <Button variant="contained" onClick={()=>handleSubmit}>Submit</Button>
+                                </FormControl>
+                            </Grid>
+                        </Grid>
+                        <Grid container xs={6} direction="column" alignItems="center" justifyContent="center">
+                            <PersonalSettingsImg></PersonalSettingsImg>
+                        </Grid>
+                        
+                    </Grid>
+                </Box>
+            </Box>
+        
+            </>
+    )
 }
 export default Questions;
