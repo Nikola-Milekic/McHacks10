@@ -43,12 +43,17 @@ def add_persona():
     """
 
     content = request.json
-    name = content['name'].lower()
-    examples = content['examples']
+    name = content[0]['answer']
+    questions = content[1:]
+    for q in questions:
+        q.pop('id', None)
+        q.pop('question')
+        q['user'] = q.pop('realQuestion')
+        q['bot'] = q.pop('answer')
 
     with open(f'{srcDir}/template.json') as f:
         template = json.load(f)
-    template['chat_prompt_config']['examples'] = [examples,[]]
+    template['chat_prompt_config']['examples'] = [questions,[]]
 
     if not os.path.exists(f'{personaDir}/{name}'):
         os.mkdir(f'{personaDir}/{name}')

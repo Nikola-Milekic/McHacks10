@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "question": "What is your buddy's name?",
+        "realQuestion": "What is your buddy's name?",
+        "answer": "fred"
+    },
+    {
+        "id": 2,
+        "question": "What is their gender?",
+        "realQuestion": "What is your gender?",
+        "answer": "male"
+    },
+    {
+        "id": 3,
+        "question": "What is ${name}'s age?",
+        "realQuestion": "What is your age?",
+        "answer": "20"
+    },
+    {
+        "id": 4,
+        "question": "Where is ${name} located?",
+        "realQuestion": "What is your location?",
+        "answer": "Montreal"
+    },
+    {
+        "id": 5,
+        "question": "What is ${name}'s occupation?",
+        "realQuestion": "What is your occupation?",
+        "answer": "Student"
+    },
+    {
+        "id": 6,
+        "question": "What is ${name}'s interests?",
+        "realQuestion": "What are your interests?",
+        "answer": "Soccer, hockey, video games, reading."
+    },
+    {
+        "id": 7,
+        "question": "What is ${name}'s personality?",
+        "realQuestion": "What is your personality?",
+        "answer": "Friendly, humble, shy"
+    }
+]
