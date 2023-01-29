@@ -22,17 +22,29 @@ const queryClient = new QueryClient({
   },
 });
 
+export type GlobalContent = {
+  buddyName: string;
+  setBuddyName: (buddyName: string) => void;
+}
+export const MyGlobalContext = createContext<GlobalContent>({
+  buddyName: "bot",
+  setBuddyName: () => { },
+});
+
 function App() {
+  const [buddyName, setBuddyName] = useState<string>("bot");
   return (
-    <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Landing />}/>
-        <Route path="Questions" element={<Questions />} />
-        <Route path="BuddyChat" element={<BuddyChat />} />   
-       </Routes>
-    </BrowserRouter>
-  </QueryClientProvider>
+    <MyGlobalContext.Provider value={{ buddyName, setBuddyName}}>
+      <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />}/>
+          <Route path="Questions" element={<Questions />} />
+          <Route path="BuddyChat" element={<BuddyChat />} />   
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
+  </MyGlobalContext.Provider>
   );
 }
 

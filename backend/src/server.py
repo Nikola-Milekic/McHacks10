@@ -7,11 +7,13 @@ import cohere
 import conversant
 import pathlib
 import json
+from flask_cors import CORS
 
 load_dotenv()
 COHERE_API_KEY = os.environ.get('APIKEY')
 
 app = Flask(__name__)
+CORS(app)
 personaDir = str(pathlib.Path().resolve())+"/src/personas"
 srcDir = str(pathlib.Path().resolve())+"/src"
 co = cohere.Client(COHERE_API_KEY)

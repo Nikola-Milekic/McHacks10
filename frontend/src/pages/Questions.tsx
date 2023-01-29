@@ -9,13 +9,15 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import {useNavigate} from 'react-router-dom';
+import { MyGlobalContext } from '../App';
 
 function Questions(){
+    const {buddyName, setBuddyName} = useContext(MyGlobalContext)
     const [name,setName] = useState('')
     const [gender,setGender] = useState('')
     const [age,setAge] = useState('')
@@ -57,7 +59,7 @@ function Questions(){
             question:`What is ${name}'s personality?`,
             answer:''
         },
-        
+
         
     ]
     const [questions,setQuestions] = useState(qArray)
@@ -92,6 +94,7 @@ function Questions(){
             },1000);
 
             console.log(questions)
+            setBuddyName(name)
             setHasName(true)
         }
     }
@@ -115,13 +118,12 @@ function Questions(){
     const handleSubmit = () =>{
         buddyRefetch();
     }
-
     useEffect(()=>{
         if(buddySuccess){
             console.log(buddyData)
             navigate("/BuddyChat")
         }
-    })
+    },[buddySuccess])
 
     if(!hasName){
         return (
