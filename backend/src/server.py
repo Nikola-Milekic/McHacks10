@@ -29,6 +29,22 @@ def listPersonas():
 
 @app.route('/add-persona', methods=['POST'])
 def add_persona():
+    """
+    Endpoint to create a new persona config.
+    ---
+    POST:
+    {
+        "name": "John Doe"
+        "examples": [
+            {
+                "user": "{QUESTION}"
+                "bot": "{RESPONSE}"
+            },
+            ...
+        ]
+    }
+    """
+
     content = request.json
     name = content['name'].lower()
     examples = content['examples']
@@ -39,11 +55,13 @@ def add_persona():
 
     if not os.path.exists(f'{personaDir}/{name}'):
         os.mkdir(f'{personaDir}/{name}')
+    else:
+        return f"Error! Buddy already exists.", 418
     out = json.dumps(template, indent=4)
     with open(f'{personaDir}/{name}/config.json', 'w') as f:
         f.write(out)
 
-    return "all good bro"
+    return "All good bro.", 200
     
 @app.route('/chat/<name>', methods = ['POST', 'GET'])
 def chat_with_friend(name):
