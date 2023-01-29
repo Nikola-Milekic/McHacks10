@@ -122,7 +122,7 @@ function Chatbox() {
         }} sx={{width:'100%'}} onChange={event => handleInput(event)} minRows={3} placeholder="Could be Anything :)" value={query}>
       </Textarea>
       <Button variant="contained" onClick={handleSubmit}>Submit</Button></>): (<div>
-    <p>Loading...</p>
+    <p>{buddyName}'s thinking!</p>
   </div>)}
     </div>
   </>);     
