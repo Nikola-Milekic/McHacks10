@@ -5,7 +5,7 @@
 _(localhost:3001 by default)_
 1. `cd McHacks/backend`
 1. `touch .env`
-1. `echo APIKEY="{COHERE_API_KEY" > .env`
+1. `echo APIKEY="{COHERE_API_KEY}" > .env`
 1. `python3 -m venv venv`
 1. `source venv/bin/activate` (MacOS/*nix)
 1. `pip install -r requirements.txt`
