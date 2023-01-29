@@ -8,7 +8,7 @@ import { MyGlobalContext } from "../../App";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Button from "@mui/material/Button";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { textAlign } from "@mui/system";
 
 interface messageType {
@@ -94,30 +94,39 @@ function Chatbox() {
 
 
   return (
-    (!isLoad) ? ( 
     <>
-    <div className="flex items-center mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-xl mx-8 max-w-2xl">
+    <div className="flex items-center mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-xl mx-8">
       <Grid container spacing={1} sx={{borderRadius:'22px',alignItems:'center'}}>
         <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
         {data.map((message:any) =>(
               <div>
-                <Typography >{message.user}</Typography>
-                <Typography >{message.bot}</Typography>
+                <Box sx={{display:"flex",alignItems: 'center', marginBottom:"10px"}}>
+                  <Typography sx={{paddingRight:"7px"}}>User:</Typography>
+                <Box sx={{ border: 1, borderRadius: '16px', borderColor: 'green', borderWidth:"3px", textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                  <Typography sx={{paddingY:"5px", paddingX:"8px"}}>{message.user}</Typography>
+                </Box>
+                </Box>
+                <Box sx={{display:"flex",alignItems: 'center', marginBottom:"10px"}}>
+                  <Typography sx={{paddingRight:"16px"}}>Bot:</Typography>
+                <Box sx={{ border: 1, borderRadius: '16px', borderColor: 'gray', borderWidth:"3px", textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                  <Typography sx={{paddingY:"5px", paddingX:"8px"}}>{message.bot}</Typography>
+                </Box>
+                </Box>
               </div>
             ))}
         </Grid>
       </Grid>
+      {!isLoad ? (<>
       <Textarea slotProps={{
         textarea:{
             id: 'query',
         }
         }} sx={{width:'100%'}} onChange={event => handleInput(event)} minRows={3} placeholder="Could be Anything :)" value={query}>
       </Textarea>
-      <Button variant="contained" onClick={handleSubmit}>Submit</Button>
-    </div>
-    </>
-  ): (<div>
+      <Button variant="contained" onClick={handleSubmit}>Submit</Button></>): (<div>
     <p>Loading...</p>
-  </div>));     
+  </div>)}
+    </div>
+  </>);     
  } 
 export default Chatbox;

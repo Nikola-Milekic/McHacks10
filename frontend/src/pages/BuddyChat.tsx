@@ -29,7 +29,7 @@ function BuddyChat() {
           data-aos-delay="250"
           className="text-2xl py-2 lg:text-3xl text-gray-700 font-semibold"
         >
-          👋 Say <span className="text-primary">Hi</span> to Friend!
+          👋 Say <span className="text-primary">Hi</span> to your new Friend!
         </h1>
       </div>
 
