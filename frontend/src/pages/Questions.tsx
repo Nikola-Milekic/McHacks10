@@ -11,12 +11,16 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import {useNavigate} from 'react-router-dom';
 
 function Questions(){
     const [name,setName] = useState('')
     const [gender,setGender] = useState('')
     const [age,setAge] = useState('')
     const [hasName,setHasName] = useState(false)
+    const navigate = useNavigate();
     var qArray = [
         {
             id: 1,
@@ -91,26 +95,32 @@ function Questions(){
         }
     }
 
-    /*
+    
     const addBuddy: () => any = async () => {
         const URL = 'http://localhost:3001/add-persona'
         const response = await axios.post(URL, {
             name: name,
             examples:[
-
-            ]
-            )
-*/
+                questions
+            ]}
+        );
+        return response;
+    };
+    const {data:buddyData,refetch:buddyRefetch, isSuccess:buddySuccess} = useQuery(
+        ["addBuddy"],
+        addBuddy,
+        {enabled: false}
+        );
     const handleSubmit = () =>{
-        console.log("fsoij")
-        let buddy = questions.map((q) =>{
-            return q.answer
-        })
-        console.log(buddy)
-
+        buddyRefetch();
     }
 
-
+    useEffect(()=>{
+        if(buddySuccess){
+            console.log(buddyData)
+            navigate("/BuddyChat")
+        }
+    })
 
     if(!hasName){
         return (
@@ -165,7 +175,7 @@ function Questions(){
                         <Grid item xs={6}>
                             <Grid container spacing={1} margin={'10px'}>
                                 <FormControl onSubmit={handleSubmit}>
-                                    <FormLabel htmlFor="ageQuestion">{questions[2]['question']}</FormLabel>  
+                                    <FormLabel htmlFor="ageQuestion">What is {name}'s name</FormLabel>  
                                     <Textarea slotProps={{
                                         textarea:{
                                             id: 'ageQuestion',
