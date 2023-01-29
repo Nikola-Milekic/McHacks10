@@ -45,6 +45,7 @@ def add_persona():
     """
 
     content = request.json
+    print(content)
     name = content[0]['answer']
     questions = content[1:]
     for q in questions:
