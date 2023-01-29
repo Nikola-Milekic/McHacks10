@@ -7,7 +7,7 @@
     "client_config": {
         "model": "xlarge",
         "max_tokens": 200,
-        "temperature": 0.75,
+        "temperature": 0.35,
         "stop_sequences": ["\n"]
     },
     "chat_prompt_config": {
