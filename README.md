@@ -1,4 +1,4 @@
-# McHacks10
+# McHacks10 | Build-a-Buddy
 
 ## Flask Backend
 ### Starting the server 
