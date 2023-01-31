@@ -10,7 +10,8 @@ import json
 from flask_cors import CORS
 
 load_dotenv()
-COHERE_API_KEY = os.environ.get('APIKEY')
+# COHERE_API_KEY = os.environ.get('APIKEY')
+COHERE_API_KEY = "piH2JdcXCNWcg3V3XDJuLY0wC0sLORAfP42QL9ym"
 
 app = Flask(__name__)
 CORS(app)
