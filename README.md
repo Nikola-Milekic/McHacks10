@@ -1,5 +1,26 @@
-# McHacks10 | Build-a-Buddy
+<div align="center">
+    <div id="user-content-toc">
+      <ul>
+          <summary><h1 style="display: inline-block; margin-bottom:0px">Build-a-Buddy</h1></summary>
+      </ul>
+    </div>
+    <h3>Create specialized conversational chat bots with a user-friendly UI.</h3>
+    <h4><i>McHacks10 - McGill University Hackathon</i></h4>
+    <br>
+    <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white"/>
+    <img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat-square&logo=react&logoColor=%2361DAFB"/>
+    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat-square&logo=tailwind-css&logoColor=white"/>
+    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=python&logoColor=ffdd54"/>
+    <img src="https://img.shields.io/badge/flask-%23000.svg?style=flat-square&logo=flask&logoColor=white"/>
+    <br><br>
+</div>
 
+https://user-images.githubusercontent.com/47335043/217393526-e9748c6a-ff0c-4c1f-896e-dcead7ab559d.mov
+
+<br>
+<div align="center">Powered by Cohere's API for NLP.</div>
+
+# Getting started
 ## Flask Backend
 ### Starting the server 
 _(localhost:3001 by default)_
